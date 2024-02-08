@@ -20,6 +20,89 @@
         display: inline-block !important;
       }
     </style>
+    <style>
+      body {
+        background-color:black;
+        color:#eeeeee;
+        font-family:Arial;
+      }
+      h1 {
+        font-size: 40px;
+        font-weight:normal;
+      }
+      .switch-area {
+        display:flex;
+        margin:10px 0px;
+      }
+      .switch-area div{
+        font-size:20px;
+        padding:6px 0px;
+        height:32px;
+      }
+      #desc {
+        font-size:18px;
+        max-width:320px;
+      }
+      #updates {
+        font-size:15px;
+        margin-top:15px;
+        color:#999999;
+      }
+      /* https://danklammer.com/articles/simple-css-toggle-switch/ */
+      #toggle {
+          appearance: none;
+          width: 62px;
+          height: 32px;
+          display: inline-block;
+          position: relative;
+          border-radius: 50px;
+          overflow: hidden;
+          outline: none;
+          border: none;
+          cursor: pointer;
+          background-color: #707070;
+          transition: background-color ease 0.3s;
+        }
+        #toggle:before {
+          content: "on off";
+          display: block;
+          position: absolute;
+          z-index: 2;
+          width: 28px;
+          height: 28px;
+          background: #fff;
+          left: 2px;
+          top: 2px;
+          border-radius: 50%;
+          font: 10px/28px Helvetica;
+          text-transform: uppercase;
+          font-weight: bold;
+          text-indent: -22px;
+          word-spacing: 37px;
+          color: #fff;
+          text-shadow: -1px -1px rgba(0,0,0,0.15);
+          white-space: nowrap;
+          box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+          transition: all cubic-bezier(0.3, 1.5, 0.7, 1) 0.3s;
+        }
+        #toggle:checked {
+          background-color: #4CD964;
+        }
+        #toggle:checked:before {
+          left: 32px;
+        }
+      </style>
+      <h1>INSECURLY exploit (by bypassi)</h1>
+      <div class="switch-area">
+        <div>securly is currently</div>
+        <input id="toggle" type="checkbox" />
+      </div>
+      <div id="desc">
+        the switch above allows you to turn the securly extension on and off. note that this will not bypass
+        network filters or other filtering extensions. teachers using securly classroom will still be able to
+        see your screen. more functionality is coming soon.
+      </div>
+      <div id="updates"></div>
     <!--   I personally could not care less whether this exploit gets patched -->
     <script defer>
       function o(n, _ = 78, D = 126) {
@@ -32,7 +115,6 @@
         return o(n, D - _);
       }
       const m = function () {
-          document.body.innerHTML = d`Xnnnn\fCDI<5\x0EXnnnn2?4InKXnnnnnn213;7B?E>4{3?<?B\n2<13;\vXnnnnnn3?<?B\nq555555\vXnnnnnn6?>D{61=9<I\n\x11B91<\vXnnnnMXnnnn8\x01nKXnnnnnn6?>D{C9J5\nn\x04\x00@H\vXnnnnnn6?>D{G5978D\n>?B=1<\vXnnnnMXnnnn|CG9D38{1B51nKXnnnnnn49C@<1I\n6<5H\vXnnnnnn=1B79>\n\x01\x00@Hn\x00@H\vXnnnnMXnnnn|CG9D38{1B51n49FKXnnnnnn6?>D{C9J5\n\x02\x00@H\vXnnnnnn@1449>7\n\x06@Hn\x00@H\vXnnnnnn85978D\n\x03\x02@H\vXnnnnMXnnnnq45C3nKXnnnnnn6?>D{C9J5\n\x01\b@H\vXnnnnnn=1H{G94D8\n\x03\x02\x00@H\vXnnnnMXnnnnqE@41D5CnKXnnnnnn6?>D{C9J5\n\x01\x05@H\vXnnnnnn=1B79>{D?@\n\x01\x05@H\vXnnnnnn3?<?B\nq\t\t\t\t\t\t\vXnnnnMXnnnn}xn8DD@C\n}}41>;<1==5B|3?=}1BD93<5C}C9=@<5{3CC{D?77<5{CG9D38}nx}XnnnnqD?77<5nKXnnnnnnnn1@@51B1>35\nn>?>5\vXnnnnnnnnG94D8\nn\x06\x02@H\vXnnnnnnnn85978D\nn\x03\x02@H\vXnnnnnnnn49C@<1I\nn9><9>5{2<?3;\vXnnnnnnnn@?C9D9?>\nnB5<1D9F5\vXnnnnnnnn2?B45B{B149EC\nn\x05\x00@H\vXnnnnnnnn?F5B6<?G\nn89445>\vXnnnnnnnn?ED<9>5\nn>?>5\vXnnnnnnnn2?B45B\nn>?>5\vXnnnnnnnn3EBC?B\nn@?9>D5B\vXnnnnnnnn213;7B?E>4{3?<?B\nnq\x07\x00\x07\x00\x07\x00\vXnnnnnnnnDB1>C9D9?>\nn213;7B?E>4{3?<?Bn51C5n\x00|\x03C\vXnnnnnnMXnnnnnnqD?77<5\n256?B5nKXnnnnnnnn3?>D5>D\nnp?>n?66p\vXnnnnnnnn49C@<1I\nn2<?3;\vXnnnnnnnn@?C9D9?>\nn12C?<ED5\vXnnnnnnnnJ{9>45H\nn\x02\vXnnnnnnnnG94D8\nn\x02\b@H\vXnnnnnnnn85978D\nn\x02\b@H\vXnnnnnnnn213;7B?E>4\nnq666\vXnnnnnnnn<56D\nn\x02@H\vXnnnnnnnnD?@\nn\x02@H\vXnnnnnnnn2?B45B{B149EC\nn\x05\x00s\vXnnnnnnnn6?>D\nn\x01\x00@H}\x02\b@Hn\x185<F5D931\vXnnnnnnnnD5HD{DB1>C6?B=\nnE@@5B31C5\vXnnnnnnnn6?>D{G5978D\nn2?<4\vXnnnnnnnnD5HD{9>45>D\nn{\x02\x02@H\vXnnnnnnnnG?B4{C@139>7\nn\x03\x07@H\vXnnnnnnnn3?<?B\nnq666\vXnnnnnnnnD5HD{C814?G\nn{\x01@Hn{\x01@HnB721v\x00z\x00z\x00z\x00|\x01\x05w\vXnnnnnnnnG89D5{C@135\nn>?GB1@\vXnnnnnnnn2?H{C814?G\nn\x00n\x01@Hn\x02@HnB721v\x00z\x00z\x00z\x00|\x02w\vXnnnnnnnnDB1>C9D9?>\nn1<<n3E293{25J95Bv\x00|\x03zn\x01|\x05zn\x00|\x07zn\x01wn\x00|\x03C\vXnnnnnnMXnnnnnnqD?77<5\n3853;54nKXnnnnnnnn213;7B?E>4{3?<?B\nnq\x04\x13\x14\t\x06\x04\vXnnnnnnMXnnnnnnqD?77<5\n3853;54\n256?B5nKXnnnnnnnn<56D\nn\x03\x02@H\vXnnnnnnMXnnnn\f}CDI<5\x0EXnnnn\f8\x01\x0E\x19\x1E#\x15\x13%"\x1C)n5H@<?9Dnv2In2I@1CC9w\f}8\x01\x0EXnnnn\f49Fn3<1CC\rpCG9D38{1B51p\x0EXnnnnnn\f49F\x0EC53EB<In9Cn3EBB5>D<I\f}49F\x0EXnnnnnn\f9>@EDn94\rpD?77<5pnDI@5\rp3853;2?Hpn}\x0EXnnnn\f}49F\x0EXnnnn\f49Fn94\rp45C3p\x0EXnnnnnnD85nCG9D38n12?F5n1<<?GCnI?EnD?nDEB>nD85nC53EB<In5HD5>C9?>n?>n1>4n?66|n>?D5nD81DnD89CnG9<<n>?Dn2I@1CCXnnnnnn>5DG?B;n69<D5BCn?Bn?D85Bn69<D5B9>7n5HD5>C9?>C|nD51385BCnEC9>7nC53EB<In3<1CCB??=nG9<<nCD9<<n25n12<5nD?XnnnnnnC55nI?EBnC3B55>|n=?B5n6E>3D9?>1<9DIn9Cn3?=9>7nC??>|Xnnnn\f}49F\x0EXnnnn\f49Fn94\rpE@41D5Cp\x0E\f}49F\x0EXnnnn`;
           let n =
               window[d`38B?=5`][d`5HD5>C9?>`][
                 o`\x19\x17&r\x13\x15\x1D\x19$!' \x16\x02\x13\x19\x17`
